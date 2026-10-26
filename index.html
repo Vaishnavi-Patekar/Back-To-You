@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ef">
+  <meta name="description" content="A friendly campus lost and found demo. Every lost thing deserves a way home.">
+  <title>BACK TO YOU — Campus Lost &amp; Found</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="Back to You home"><span class="brand-mark" aria-hidden="true">↗</span><span>BACK TO YOU</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation"><span></span><span></span></button>
+      <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#explore">Explore items</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#report">Report an item</a>
+        <a class="nav-cta" href="#report" data-report-type="found">Report found item <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section-pad" id="home" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-dot"></span> A little help goes a long way</p>
+          <h1 id="hero-title">Lost something?<br>Let’s bring it <em>back to you.</em></h1>
+          <p class="hero-intro">A little help from your campus community can make a lost belonging find its way home.</p>
+          <div class="hero-actions">
+            <a class="button button-dark" href="#explore">Find my item <span aria-hidden="true">↗</span></a>
+            <a class="button button-outline" href="#report" data-report-type="found">I found something <span aria-hidden="true">＋</span></a>
+          </div>
+          <div class="hero-note"><span class="avatar-stack" aria-hidden="true"><i>J</i><i>A</i><i>M</i></span><span>Made for the campus community</span><span class="note-separator">·</span><span>Demo listings</span></div>
+        </div>
+        <div class="hero-art" aria-label="Illustration of a backpack, headphones, notebook and water bottle">
+          <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+          <div class="art-sticker sticker-spark" aria-hidden="true">✳</div>
+          <div class="art-sticker sticker-heart" aria-hidden="true">♡</div>
+          <div class="object-card object-bag" aria-hidden="true"><span class="object-emoji">🎒</span><span class="object-caption">found, with care</span></div>
+          <div class="object-card object-headphones" aria-hidden="true"><span class="object-emoji">🎧</span></div>
+          <div class="object-card object-notebook" aria-hidden="true"><span class="object-emoji">📓</span></div>
+          <div class="object-card object-bottle" aria-hidden="true"><span class="object-emoji">🧴</span></div>
+          <div class="hero-art-label"><span class="label-check">✓</span><span><strong>Every lost thing</strong><br>deserves a way home.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Our approach">
+      <div class="container trust-grid">
+        <div class="trust-item"><span class="trust-icon">◎</span><div><strong>Campus community</strong><span>Students helping students</span></div></div>
+        <div class="trust-item"><span class="trust-icon">✳</span><div><strong>Easy item reporting</strong><span>Share only what’s helpful</span></div></div>
+        <div class="trust-item"><span class="trust-icon">↗</span><div><strong>Responsible returns</strong><span>Safety comes first</span></div></div>
+      </div>
+    </section>
+
+    <section class="explore section-pad" id="explore" aria-labelledby="explore-title">
+      <div class="container">
+        <div class="section-heading heading-row">
+          <div><p class="eyebrow">THE CAMPUS BOARD <span class="eyebrow-line"></span></p><h2 id="explore-title">A little lost.<br><em>A little found.</em></h2></div>
+          <p class="section-description">Browse demo listings from around campus. A familiar detail might be the beginning of a happy reunion.</p>
+        </div>
+        <div class="listing-tools">
+          <label class="search-box"><span class="sr-only">Search listings</span><span aria-hidden="true">⌕</span><input id="search-input" type="search" placeholder="Try “blue bottle” or “library”"></label>
+          <label class="filter-select"><span class="sr-only">Filter by category</span><select id="category-filter"><option value="">All categories</option></select><span aria-hidden="true">⌄</span></label>
+          <label class="filter-select"><span class="sr-only">Filter by status</span><select id="status-filter"><option value="">Lost &amp; found</option><option value="lost">Lost</option><option value="found">Found</option></select><span aria-hidden="true">⌄</span></label>
+          <label class="filter-select"><span class="sr-only">Filter by location</span><select id="location-filter"><option value="">All locations</option></select><span aria-hidden="true">⌄</span></label>
+          <label class="filter-select sort-select"><span class="sr-only">Sort listings</span><select id="sort-order"><option value="newest">Newest first</option><option value="oldest">Oldest first</option><option value="name">Name A–Z</option></select><span aria-hidden="true">⌄</span></label>
+          <button class="reset-button" id="reset-filters" type="button">Reset</button>
+        </div>
+        <div class="listing-summary"><p id="listing-count" aria-live="polite"></p><span>Fictional demonstration listings</span></div>
+        <div class="listing-grid" id="listing-grid" aria-live="polite"></div>
+        <div class="empty-state" id="empty-state" hidden><span class="empty-icon" aria-hidden="true">⌕</span><h3>No items found just yet</h3><p>Try another search or clear your filters to see all listings.</p><button class="button button-outline" id="empty-reset" type="button">Clear all filters</button></div>
+      </div>
+    </section>
+
+    <section class="how section-pad" id="how-it-works" aria-labelledby="how-title">
+      <div class="container">
+        <div class="section-heading centered"><p class="eyebrow">THREE STEPS, ONE GOOD TURN</p><h2 id="how-title">A little kindness<br><em>goes a long way.</em></h2><p class="section-description">From “I can’t find it” to “it’s back where it belongs.”</p></div>
+        <div class="steps-grid">
+          <article class="step-card"><span class="step-number">01</span><span class="step-icon" aria-hidden="true">✎</span><h3>Report it</h3><p>Tell the campus community what you lost or what you found. Keep private details private.</p><a class="step-link" href="#report">Start with a simple report <span aria-hidden="true">↗</span></a></article>
+          <article class="step-card step-featured"><span class="step-number">02</span><span class="step-icon" aria-hidden="true">⌕</span><h3>Spot it</h3><p>Browse recent listings, search by what you remember, and look for a match.</p><a class="step-link" href="#explore">Explore the board <span aria-hidden="true">↗</span></a></article>
+          <article class="step-card"><span class="step-number">03</span><span class="step-icon" aria-hidden="true">♡</span><h3>Bring it back</h3><p>Respond to a listing and arrange a safe handover. A claim is never proof of ownership.</p><a class="step-link" href="#safety">Put safety first <span aria-hidden="true">↗</span></a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="report section-pad" id="report" aria-labelledby="report-title">
+      <div class="container report-grid">
+        <div class="report-copy">
+          <p class="eyebrow">YOUR CAMPUS COULD BE THE MISSING PIECE</p>
+          <h2 id="report-title">Let’s get it<br><em>back to you.</em></h2>
+          <p>Report a lost or found belonging. This demo keeps your listing on this device only; it doesn’t contact campus staff or other students.</p>
+          <div class="privacy-note"><span aria-hidden="true">♡</span><p><strong>A small safety note</strong><br>Never include passwords, full ID numbers, home addresses, or other sensitive information in a public description.</p></div>
+          <a class="text-link" href="#safety">Read our safety reminders <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="report-panel">
+          <div class="form-heading"><div><span class="form-kicker">CAMPUS COMMUNITY BOARD</span><h3>Make a report</h3></div><span class="form-spark" aria-hidden="true">✳</span></div>
+          <div class="report-toggle" role="group" aria-label="Report type">
+            <button type="button" class="toggle-option is-selected" data-type="lost" aria-pressed="true">I lost something</button>
+            <button type="button" class="toggle-option" data-type="found" aria-pressed="false">I found something</button>
+          </div>
+          <form id="report-form" novalidate>
+            <input type="hidden" id="report-type" value="lost">
+            <div class="form-row">
+              <label class="field">Item name <span class="required">*</span><input name="name" required maxlength="70" placeholder="e.g. Olive green tote bag"><span class="field-error" aria-live="polite"></span></label>
+              <label class="field">Category <span class="required">*</span><select name="category" required></select><span class="field-error" aria-live="polite"></span></label>
+            </div>
+            <label class="field">What happened? <span class="required">*</span><textarea name="description" required maxlength="240" rows="3" placeholder="A short description. Leave out any private identifying details."></textarea><span class="field-error" aria-live="polite"></span></label>
+            <div class="form-row">
+              <label class="field">Approximate location <span class="required">*</span><select name="location" required></select><span class="field-error" aria-live="polite"></span></label>
+              <label class="field">Date <span class="required">*</span><input name="date" type="date" required><span class="field-error" aria-live="polite"></span></label>
+            </div>
+            <label class="field">Additional identifying detail <span class="optional" id="private-detail-optional">(optional)</span><span class="required" id="private-detail-required" hidden>*</span><input name="privateDetail" maxlength="120" placeholder="A detail that could help identify the item"><span class="field-hint">Kept only in this session, never shown publicly. Don’t include passwords or full ID numbers.</span><span class="field-error" aria-live="polite"></span></label>
+            <div class="form-row">
+              <label class="field">Approximate time <span class="optional">(optional)</span><input name="time" type="time"><span class="field-error" aria-live="polite"></span></label>
+              <label class="field">Photo <span class="optional">(optional, max 5 MB)</span><input name="photo" type="file" accept="image/jpeg,image/png,image/webp,image/gif"><span class="field-hint">JPG, PNG, WebP, or GIF. Don’t upload ID cards.</span><span class="field-error" aria-live="polite"></span></label>
+            </div>
+            <div class="found-fields" id="found-fields" hidden>
+              <label class="field">Where is the item now? <span class="optional">(optional)</span><select name="handover"><option value="">Choose a safe handover option</option><option>Campus security desk</option><option>College office</option><option>With me — arrange a public handover</option></select></label>
+            </div>
+            <label class="field">Preferred response <span class="optional">(demo only)</span><select name="contact"><option>Respond through this listing</option><option>Arrange a handover in a public place</option><option>Leave the item with campus staff</option></select></label>
+            <div class="photo-preview" id="photo-preview" hidden><img id="photo-preview-image" alt="Selected item photo preview"><button type="button" id="remove-photo" class="remove-photo">Remove photo</button></div>
+            <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+            <div class="form-actions"><button class="button button-dark submit-button" type="submit">Post my listing <span aria-hidden="true">↗</span></button><button class="cancel-button" type="reset">Clear form</button></div>
+            <p class="demo-disclaimer">Demo only. Your report is not sent to a college or stored on a server.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="safety section-pad" id="safety" aria-labelledby="safety-title">
+      <div class="container safety-inner">
+        <div class="safety-title"><p class="eyebrow">A KIND REMINDER</p><h2 id="safety-title">Good finds.<br><em>Safe returns.</em></h2></div>
+        <div class="safety-list">
+          <p><span>01</span> Keep private details and contact information out of public listings.</p>
+          <p><span>02</span> Verify ownership carefully before returning valuable belongings.</p>
+          <p><span>03</span> Consider giving wallets, ID cards, or expensive electronics to authorized college staff.</p>
+          <p><span>04</span> A submitted claim is not proof of ownership. A real service needs human review.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <div class="footer-brand"><a class="brand" href="#home"><span class="brand-mark" aria-hidden="true">↗</span><span>BACK TO YOU</span></a><p>Every lost thing deserves a way home.<br>A little kindness can help it get there.</p></div>
+      <div class="footer-links"><strong>Find your way</strong><a href="#explore">Explore items</a><a href="#report">Report an item</a><a href="#how-it-works">How it works</a></div>
+      <div class="footer-note"><strong>Demo, not a help desk.</strong><p>This prototype runs in your browser. Listings and claims are not sent to a college or verified by staff.</p></div>
+    </div>
+    <div class="container footer-bottom"><span>© <span id="current-year"></span> BACK TO YOU</span><a href="#safety">A reminder to return responsibly ↗</a></div>
+  </footer>
+
+  <dialog class="item-dialog" id="details-dialog" aria-labelledby="details-title">
+    <button class="dialog-close" type="button" data-close-details aria-label="Close item details">×</button>
+    <div id="details-content"></div>
+  </dialog>
+  <dialog class="claim-dialog" id="claim-dialog" aria-labelledby="claim-title">
+    <button class="dialog-close" type="button" data-close-claim aria-label="Close claim form">×</button>
+    <p class="eyebrow">DEMO CLAIM</p><h2 id="claim-title">Could this be yours?</h2>
+    <p class="claim-explainer">Share a little context and a private identifying detail. This demo does not send or retain your claim, and it cannot verify ownership. In a real service, a person would review it securely.</p>
+    <form id="claim-form" novalidate>
+      <label class="field">Your name <span class="required">*</span><input name="claimant" required maxlength="70" autocomplete="name"><span class="field-error" aria-live="polite"></span></label>
+      <label class="field">Why do you think this is yours? <span class="required">*</span><textarea name="reason" required maxlength="300" rows="3"></textarea><span class="field-error" aria-live="polite"></span></label>
+      <label class="field">Private detail that can help identify it <span class="required">*</span><textarea name="proof" required maxlength="180" rows="3" placeholder="Don’t include passwords or full ID numbers."></textarea><span class="field-error" aria-live="polite"></span></label>
+      <p class="form-message" id="claim-message" role="status" aria-live="polite"></p>
+      <button class="button button-dark submit-button" type="submit">Submit demo claim <span aria-hidden="true">↗</span></button>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
